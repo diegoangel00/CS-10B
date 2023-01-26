@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int cards = 10;
+	int blackJack = 21;
+	int totalSum;	//keeps track of total score
+	int newCard;	//newcard
+	char play;	//char user inputs whether they want to play another game or not
+	char cardAgain; //char user inputs whether they want another card or not
+	//inital starting cards 
+	//srand(time(NULL));
+
+
+	do { //outer most loop for game
+
+		int card1 = rand() % cards + 1;
+		int card2 = rand() % cards + 1;
+		cout << "First cards: " << card1 << ", " << card2 << endl;
+		totalSum = card1 + card2;
+		cout << "Total: " << totalSum << endl;
+
+		cout << "Do you want another card (y/n)? ";
+		cin >> cardAgain;
+
+		while (cardAgain == 'y' || cardAgain == 'Y') { //innermost loop deciding if user wants another card
+
+			newCard = rand() % cards + 1;
+			totalSum = totalSum + newCard;
+			cout << "Card: " << newCard<<endl;
+			cout << "Total: " << totalSum<<endl;
+
+			if (totalSum > blackJack) {
+				cout << "Bust." << endl;
+				break;	//if the loss condition is met the game ends and loop is exited 
+			}		
+			if (totalSum == blackJack) {
+				cout << "Congratulations!" << endl;
+				break;	//if win condition is met the loop is exited
+			}
+				
+
+			cout << "Do you want another card (y/n)? ";
+			cin >> cardAgain;
+		}
+
+
+		cout << "Would you like to play again (y/n)? ";
+		cin >> play;
+
+	} while (play == 'y' || play == 'Y');
+
+}
