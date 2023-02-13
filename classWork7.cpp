@@ -6,6 +6,7 @@ public:
 	void print();
 	void read();
 	void set(int inMonth, int inDay, int inYear);
+	bool comesBefore(Date otherDate);
 private:
 	int day;
 	int month;
@@ -23,6 +24,20 @@ void Date::read() {
 	
 	cin>> month >> temp >> day >> temp >> year;
 
+}
+bool Date::comesBefore(Date otherDate){
+	if( year < otherDate.year)
+		return true;
+	if(year > otherDate.year)
+		return false;
+	if(month < otherDate.year)
+		return true;
+	if(month > otherDate.year)
+		return false;
+	return day < otherDate.year
+		//return true;
+	//return false;
+	
 }
 void Date::set(int inMonth, int inDay, int inYear) {
 	month = inMonth;
@@ -44,4 +59,9 @@ int main() {
 	cout<<" the date you entered was: ";
 	date2.print();
 	cout<<endl;
+	
+	if(date1.comesBefore(date2))
+		cout<<"date 1 comes before date2."<<endl;
+	else
+		cout<<"date 1 does not comes before date2."<<endl;
 }
