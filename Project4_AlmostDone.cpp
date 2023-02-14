@@ -89,7 +89,7 @@ bool  containsTwoPair(const int hand[]) {
     howMany(hand, numOf);
     int counter = 0;
     for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
-        if (numOf[i] > 2
+        if (numOf[i] >= 2)
             counter++;
     } return (counter == 2);
 }
