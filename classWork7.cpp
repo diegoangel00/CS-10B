@@ -8,6 +8,7 @@ public:
 	void set(int inMonth, int inDay, int inYear);
 	void increment();
 	bool comesBefore(Date otherDate);
+	Date increasedBy( int numDays);
 private:
 	int day;
 	int month;
@@ -15,6 +16,19 @@ private:
 	int daysInMonth();
 	bool isLeapYear();
 };
+
+
+Date Date::increasedBy(int numDays){
+	Date result;
+	result.set(month,day,year);
+	
+	for(int i = 0; i < numDays;i++){
+		increment();
+	}
+	return result;
+	
+}
+
 
 //specification
 //scope resultion operator
@@ -109,4 +123,10 @@ int main() {
 		cout<<"date 1 comes before date2."<<endl;
 	else
 		cout<<"date 1 does not comes before date2."<<endl;
+	
+	date2.increment();
+	cout<<"One day later, date2 is : ";
+	
+	
+	
 }
