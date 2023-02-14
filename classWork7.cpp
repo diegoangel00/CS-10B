@@ -13,6 +13,7 @@ private:
 	int month;
 	int year;
 	int daysInMonth();
+	bool isLeapYear();
 };
 
 //specification
@@ -60,6 +61,14 @@ void Date::increment(){
 		}
 	}
 		
+}
+bool Date::isLeapYear(){
+	if(year%400)
+		return true;
+	if(year%100)
+		return false;
+	return year % 4 == 0;
+	
 }
 bool Date::comesBefore(Date otherDate){
 	if( year < otherDate.year)
