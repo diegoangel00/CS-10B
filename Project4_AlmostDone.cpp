@@ -143,7 +143,8 @@ bool  containsFullHouse(const int hand[]) {
 bool  containsFourOfaKind(const int hand[]) {
     //declares a array of the size of Range of cards
     int numOf[RANGE_OF_CARDS];
-
+    if(hand[0] >= 6)
+        return false;
     //calls void function
     howMany(hand, numOf);
     for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
