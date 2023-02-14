@@ -14,21 +14,21 @@ void printNumber(const int list[]);
 void getHand(int list[]);
 
 
-const int HAND_SIZE = 5;
-const int LOWEST_NUM = 2;
-const int HIGHEST_NUM = 9;
+const int HAND_SIZE = 6;
+const int LOWEST_NUM = 1;
+const int HIGHEST_NUM = 13;
 const int RANGE_OF_CARDS = HIGHEST_NUM - LOWEST_NUM + 1;
 
 int main() {
     int hand[HAND_SIZE];
     //printNumber(hand);
     getHand(hand);
-    
+
    if (containsPair(hand))
         cout << "contains a pair" << endl;
-    else if (containsTwoPair(hand)) 
+    else if (containsTwoPair(hand))
         cout << "contains 2 pairs" << endl;
-    else if (containsThreeOfaKind(hand)) 
+    else if (containsThreeOfaKind(hand))
         cout << "contains 3 of a kind" << endl;
     else if(containsFullHouse(hand))
         cout << "contains Full House" << endl;
@@ -56,16 +56,16 @@ bool  containsPair(const int hand[]) {
 
     //calls void function
     howMany(hand, numOf);
-    
+
     int counter = 0;
     for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
         if (numOf[i] == 2)
             counter++;
-    } return counter == 1;
+    } return (counter == 1);
 }
 
 void howMany(const int hand[], int numOf[]) {
-    
+
     int counter = 0;
     int indNumOf = 0;
     //int smallestNum = LOWEST_NUM;
@@ -88,10 +88,11 @@ bool  containsTwoPair(const int hand[]) {
     //calls void function
     howMany(hand, numOf);
     int counter = 0;
-    for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
+    for (int i = 0; i < RANGE_OF_CARDS ; i++) {
         if (numOf[i] >= 2)
             counter++;
-    } return (counter == 2);
+    }
+    return (counter == 2);
 }
 bool  containsThreeOfaKind(const int hand[]) {
     //some may never change
@@ -99,7 +100,7 @@ bool  containsThreeOfaKind(const int hand[]) {
 
     //calls void function
     howMany(hand, numOf);
-    for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
+    for (int i = 0; i < RANGE_OF_CARDS; i++) {
         if (numOf[i] == 3)
             return true;
     } return false;
@@ -110,11 +111,11 @@ bool  containsStraight(const int hand[]) {
 
     //calls void function
     howMany(hand, numOf);
-    
+
     if(hand[0] > 6)
         return false;
     int counter = 0;
-    for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
+    for (int i = 0; i < RANGE_OF_CARDS; i++) {
         if (counter == 4)
             return true;
         if (numOf[i] == 1 && numOf[i + 1] == 1)
@@ -147,10 +148,12 @@ bool  containsFourOfaKind(const int hand[]) {
         return false;
     //calls void function
     howMany(hand, numOf);
-    for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
-        if (numOf[i] >= 4)
+    for (int i = 0; i < RANGE_OF_CARDS; i++) {
+        if (numOf[i] == 4){
             return true;
-    } return false;
+        }
+    }
+    return false;
 }
 
 void printNumber(const int list[]) {
