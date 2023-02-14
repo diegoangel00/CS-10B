@@ -24,17 +24,16 @@ int main() {
     //printNumber(hand);
     getHand(hand);
     
-
-    if (containsPair(hand))
-        cout << "contains a pair" << endl;
+    if (containsStraight(hand))
+        cout << "Straight !" << endl;
     else if (containsTwoPair(hand)) 
         cout << "Two Pair!" << endl;
+    else if (containsPair(hand))
+        cout << "contains a pair" << endl;
     else if (containsThreeOfaKind(hand)) 
         cout << "contains 3 of a kind" << endl;
     else if(containsFullHouse(hand))
         cout << "contains Full House" << endl;
-    else if (containsStraight(hand))
-        cout << "Straight !" << endl;
     else if (containsFourOfaKind(hand))
         cout << "contains four of a kind" << endl;
     else
@@ -44,7 +43,7 @@ int main() {
 
 void getHand(int list[]) {
     int input;
-    cout << "Enter "<<HAND_SIZE<< "numeric cards, no face cards.Use "<< LOWEST_NUM<<" - "<< HIGHEST_NUM << endl;
+    cout << "Enter "<<HAND_SIZE<< " numeric cards, no face cards. Use "<< LOWEST_NUM<<" - "<< HIGHEST_NUM <<"."<< endl;
     for (int i = 0; i < HAND_SIZE; i++) {
         cout << "Card " << i + 1 << ": ";
         cin >> input;
