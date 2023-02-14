@@ -37,7 +37,7 @@ int main() {
     else if (containsFourOfaKind(hand))
         cout << "contains four of a kind" << endl;
     else
-        cout << "High Card!" << endl;
+        cout << "High card!" << endl;
 
 }
 
