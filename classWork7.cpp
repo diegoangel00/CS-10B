@@ -6,11 +6,13 @@ public:
 	void print();
 	void read();
 	void set(int inMonth, int inDay, int inYear);
+	void increment();
 	bool comesBefore(Date otherDate);
 private:
 	int day;
 	int month;
 	int year;
+	int daysInMonth();
 };
 
 //specification
@@ -24,6 +26,40 @@ void Date::read() {
 	
 	cin>> month >> temp >> day >> temp >> year;
 
+}
+int Date::daysInMonth(){
+	switch(month){
+		case 2: 
+			if(isLeapYear())
+				return 29;
+			else
+				return 28;
+			
+		case 4:
+			
+		case 6:
+			
+		case 9: 
+			
+		case 11: return 30;
+			
+		default: return 31;
+	}
+	
+}
+void Date::increment(){
+	day++;
+	//past last day of the month then the month is updated and day is set to the 1st
+	if(day > daysInMonth(month)){
+		day = 1;
+		month++;
+		//past last month of the year then the year is updated and month is set to the 1st (january_
+		if(month > 12){
+			month = 1;
+			year++;
+		}
+	}
+		
 }
 bool Date::comesBefore(Date otherDate){
 	if( year < otherDate.year)
