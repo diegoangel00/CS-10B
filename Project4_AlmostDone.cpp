@@ -89,9 +89,9 @@ bool  containsTwoPair(const int hand[]) {
     howMany(hand, numOf);
     int counter = 0;
     for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
-        if (numOf[i] > 1)
+        if (numOf[i] > 2
             counter++;
-    } return counter == 2;   
+    } return (counter == 2);
 }
 bool  containsThreeOfaKind(const int hand[]) {
     //some may never change
