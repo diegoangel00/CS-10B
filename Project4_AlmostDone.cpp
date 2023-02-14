@@ -28,13 +28,13 @@ int main() {
     if (containsPair(hand))
         cout << "contains a pair" << endl;
     else if (containsTwoPair(hand)) 
-        cout << "contains 2 pairs" << endl;
+        cout << "Two Pair!" << endl;
     else if (containsThreeOfaKind(hand)) 
         cout << "contains 3 of a kind" << endl;
     else if(containsFullHouse(hand))
         cout << "contains Full House" << endl;
     else if (containsStraight(hand))
-        cout << "contains Straight" << endl;
+        cout << "Straight !" << endl;
     else if (containsFourOfaKind(hand))
         cout << "contains four of a kind" << endl;
     else
@@ -111,7 +111,9 @@ bool  containsStraight(const int hand[]) {
 
     //calls void function
     howMany(hand, numOf);
-    //printNumber(numOf);
+    
+    if(hand[0] > 6)
+        return false;
     int counter = 0;
     for (int i = 0; i < RANGE_OF_CARDS + 1; i++) {
         if (counter == 4)
