@@ -25,4 +25,18 @@ int main() {
 	//make intptr1 point to the same thing that intptr is pointing to.
 
 	cout << intptr << " " << i << " " << *intptr << endl;
+	
+	*intptr = 15;
+	
+	cout << intptr << " " << i << " " << *intptr << endl;
+	
+	//(5) Pointers to Objects
+	
+	string* strptr1;
+	string str1("hello");
+	strptr1; = &str1;
+	cout << *strptr1.substr(2,3) << endl;
+	
+	
+	
 }
