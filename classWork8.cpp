@@ -36,6 +36,8 @@ int main() {
 	string str1("hello");
 	strptr1; = &str1;
 	cout << *strptr1.substr(2,3) << endl;
+	// "->" means dereference and select
+	cout << strptr1->substr(2,3) << endl;
 	
 	
 	
