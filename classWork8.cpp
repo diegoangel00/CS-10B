@@ -35,10 +35,20 @@ int main() {
 	string* strptr1;
 	string str1("hello");
 	strptr1; = &str1;
-	cout << *strptr1.substr(2,3) << endl;
+	//cout << *strptr1.substr(2,3) << endl;
 	// "->" means dereference and select
-	cout << strptr1->substr(2,3) << endl;
+	//cout << strptr1->substr(2,3) << endl;
 	
+	//cout << (*strptr).substr(2, 3) << endl;
+	//cout << (*strptr).substr(2, 3) << endl;
 	
+	string* strptr2;
+	string* strptr3;
+	
+	string str2("there")
+	string str3("penelope")
+		
+	strptr2 = &str2;
+	strptr3 = &str3;
 	
 }
