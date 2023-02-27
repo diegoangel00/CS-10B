@@ -51,4 +51,10 @@ int main() {
 	strptr2 = &str2;
 	strptr3 = &str3;
 	
+	//array of pointers to strings w/ initialization
+	string* array[10] = {strptr1, strptr2, strptr3};
+	
+	//below only populates the first 3 entries with values
+	//int array[10] = {4, 7, 9};
+	
 }
