@@ -57,4 +57,7 @@ int main() {
 	//below only populates the first 3 entries with values
 	//int array[10] = {4, 7, 9};
 	
+	// make the first entry the value of the union between [1] and [2]
+	*array[0] = *array[1] + *array[2];
+	
 }
