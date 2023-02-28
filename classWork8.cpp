@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+//prototype
+void init(int* x);
+
 int main() {
 	// (1) declare a pointer
 	int* intptr;
@@ -59,5 +62,50 @@ int main() {
 	
 	// make the first entry the value of the union between [1] and [2]
 	*array[0] = *array[1] + *array[2];
+	
+	// 12.2.8 Array name without [] is a pointer constant, declaring and array is a constant address, a ptr can be changed
+	int array2[10];
+	int* ptr;
+	
+	ptr = array2;
+	
+	array[3] = 7;
+	ptr[2] = 6;
+	
+	cout<< ptr[3] <<endl;
+	cout<< array2[2] <<endl;
+	
+	//x is a pointer, to a pointer of a string
+	string** x = array;
+	
+	//
+	//*x[2];
+	//print out location of [2]
+	cout<< array[2] <<endl;
+	
+	//print out value at location [2]
+	cout<< *array[2] <<endl;
+	
+	//returns memory address at array[2]
+	//useful for comparing addresses of different locations (if they are next to each other)
+	cout<< *(array + 2) <<endl;
+	
+	//returns value at address of array [2]
+	cout<< **(array + 2) <<endl;
+	
+	init(ptr);
+	for(int i = 0; i< 10; i++){
+		cout<< array2[i] << " ";
+	}
+	cout << endl;
+}
+//also could be written as
+//void init(int x[]){
+void init(int* x){
+	for(int i = 0; i< 10; i++){
+		//ptr arythmatic
+		// or *(x+i) = i;
+		x[i] = i;
+	}
 	
 }
