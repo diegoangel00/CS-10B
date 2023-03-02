@@ -39,4 +39,17 @@ int main() {
   delete intptr;
   delete [] stringArray;
 
+  //memory leak scenario
+  int* ptr1 = new item;
+  int* ptr2 = new item;
+  *ptr2 = 44;
+  *ptr1 = *ptr2;
+  
+  ptr1 = ptr2;
+  
+  //memory leak fix below
+  delete ptr1;
+  //deallocate before 
+  ptr1 = ptr2;
+  
 }
