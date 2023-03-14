@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 //Write a program that records high-score data for a fictitious game. 
@@ -67,10 +68,24 @@ void readData(string names[], int scores[], int size) {
 
 
 void sortData(string names[], int scores[], int size) {
-
-
-
-
+//This function sorts the data Descending Order
+	int mximum = scores[0];
+	int index = 0;
+	string name = names[0];
+	
+	
+	for (int i = 1; i < size; i++) {
+		//if condition is met it will replace the highest score 
+		if(score[i] > maximum) {
+			score[index] = score[i];
+			names[index] = names[i];
+			
+			maximum = score[i];
+			name = names[i];
+			index++;
+		}
+		
+	}	
 }
 
 
