@@ -8,6 +8,7 @@ using namespace std;
 FeetInches::FeetInches(int inFeet, int inInches) {
 	feet = inFeet;
 	inches = inInches;
+	simplify();
 
 }
 
@@ -56,6 +57,7 @@ FeetInches FeetInches::operator+(const FeetInches& other) {
 	FeetInches temp;
 	temp.feet = feet + other.feet;
 	temp.inches = inches + other.inches;
+	temp.simplify();
 	return temp;
 
 
@@ -72,6 +74,20 @@ FeetInches FeetInches::addedTo(const FeetInches& other) {
 
 }
 
+
+
+void FeetInches::simplify(){
+	if(inches>=12){
+		feet+= inches /12;
+		inches %= 12;
+	}
+	else if{
+		feet+= abs(inches) /12 + 1;
+		inches = 12 - (abs(inches) % 12);				
+	}
+	
+	
+}
 
 
 //<return type> <class-name>::<function-name>(parameters)
