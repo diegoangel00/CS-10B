@@ -26,12 +26,26 @@ void FeetInches::print() {
 
 
 
-
+// pre increment
 FeetInches FeetInches::operator++() {
 	feet++;
 
 	//*this means a pointer to the calling object
 	return *this;
+}
+
+//post increment 
+FeetInches FeetInches::operator++(int) {
+	//all the same way of doing it
+	//Feetinches temp(feet, inches);
+	FeetInches temp = *this;
+	//FeetInches temp(*this);
+	
+	
+	feet++;
+	
+	//*this means a pointer to the calling object
+	return temp;
 }
 
 
