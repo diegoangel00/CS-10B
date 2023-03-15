@@ -8,6 +8,7 @@ public:
 	FeetInches operator++(); //pre increment
 	FeetInches operator++(int); //post increment
 private:
+	void simplify();
 	int feet;
 	int inches;
 };
