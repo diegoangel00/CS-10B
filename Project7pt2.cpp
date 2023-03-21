@@ -35,13 +35,13 @@ void displayData(const string names[], const int scores[], int size);
 
 int main() {
 
-int scores[];
-string names[];
-int size;
+//int scores[];
+//string names[];
+//int size;
 	
-readData(names, int scores, int size);
-sortData(names, int scores, int size);
-displayData(names, int scores, int size);
+//readData(names, int scores, int size);
+//sortData(names, int scores, int size);
+//displayData(names, int scores, int size);
 	
 	
 
