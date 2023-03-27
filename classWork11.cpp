@@ -13,7 +13,8 @@ int main() {
 	
 	cout << f2 << " plus " << f3 << "equals " << f1 << endl;
 	
-	
+	// We cannot overload an operator as a member function if the left operand is not
+	//an object of the class.
 	
 	
 	f2.print();
