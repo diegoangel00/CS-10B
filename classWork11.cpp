@@ -19,6 +19,15 @@ int main() {
 	// A friend function is only required when we want to allow the left operand to be 
 	// something other than an object of the class.
 	
+	cout<< f1++ << endl;
+	cout<< ++f1 << endl;
+	cout<< f1 << endl;
+	
+	f1 = f3 + i;
+	cout << " f1 is now " << f1 << endl;
+	
+	
+	
 	f2.print();
 	cout << " plus ";
 	f3.print();
