@@ -7,6 +7,7 @@ public:
 	FeetInches operator+(const FeetInches& other);
 	FeetInches operator++(); //pre increment
 	FeetInches operator++(int); //post increment
+	friend ostream& operator<<(ostream& out, const FeetInhes& right);
 private:
 	void simplify();
 	int feet;
