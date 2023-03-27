@@ -16,7 +16,7 @@ FeetInches::FeetInches(int inFeet, int inInches) {
 
 ostream& operator<<(ostream& out, const FeetInhes& right){
 	out<< right.feet << " feet " << right.inches << endl;
-	
+	return out;
 }
 
 
