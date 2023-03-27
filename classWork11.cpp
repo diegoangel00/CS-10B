@@ -10,6 +10,12 @@ int main() {
 	//f1 = f2.addedTo(f3);
 	f1 = f2 + f3;
 
+	
+	cout << f2 << " plus " << f3 << "equals " << f1 << endl;
+	
+	
+	
+	
 	f2.print();
 	cout << " plus ";
 	f3.print();
