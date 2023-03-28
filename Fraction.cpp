@@ -54,7 +54,7 @@ void Fraction::simplify() {
 
 
 
-Fraction Fraction::addedTo(Fraction f2) const{
+Fraction Fraction::addedTo(const Fraction& f2) const{
     // Goal is to add the current Fraction called and the Fraction that was passed to it
     // finds greatest common denominator and adds numerators
     // Outputs the simplified result, does not deal with negatives
@@ -75,7 +75,7 @@ Fraction Fraction::addedTo(Fraction f2) const{
 
 
 
-Fraction Fraction::subtract(Fraction f2) const {
+Fraction Fraction::subtract(const Fraction& f2) const {
     // Goal is to subtract the current Fraction called and the Fraction that was passed to it
     // finds greatest common denominator and subtracts numerators
     // Outputs the simplified result, does not deal with negatives
@@ -96,7 +96,7 @@ Fraction Fraction::subtract(Fraction f2) const {
 
 
 
-Fraction Fraction::multipliedBy(Fraction f2) const{
+Fraction Fraction::multipliedBy(const Fraction& f2) const{
     // Goal is to multiply the current Fraction called and the Fraction that was passed to it
     // Outputs the simplified result, does not deal with negatives
     // NEEDS simplify()
@@ -116,7 +116,7 @@ Fraction Fraction::multipliedBy(Fraction f2) const{
 
 
 
-Fraction Fraction::dividedBy(Fraction f2) const{
+Fraction Fraction::dividedBy(const Fraction& f2) const{
     // Goal is to divide the current Fraction called and the Fraction that was passed to it
     // Outputs the simplified result 
     // NEEDS simplify()
@@ -135,7 +135,7 @@ Fraction Fraction::dividedBy(Fraction f2) const{
 
 
 
-bool Fraction::isEqualTo(Fraction f2) {
+bool Fraction::isEqualTo(const Fraction& f2) {
     // Goal is to check if the current Fraction called and the Fraction that was passed to it are the same
     // Outputs the simplified result 
     // NEEDS simplify()
