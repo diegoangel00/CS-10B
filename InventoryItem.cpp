@@ -1,6 +1,7 @@
+#include <cassert>
 #include <iostream>
 #include "InventoryItem.h"
-#pragma warning(disable:4996);
+#pragma warning(disable:4996)
 
 using namespace std;
 
@@ -19,12 +20,27 @@ InventoryItem::InventoryItem() {
 }
 
 
+InventoryItem::~InventoryItem() {
+    delete[] description;
+}
+
+
 InventoryItem::InventoryItem(const char* inDesc) {
     units = 0;
     description = new char[strlen(inDesc) + 1];
     strcpy(description, inDesc);
 }
 
+char& InventoryItem::operator[](int index) {
+    assert(index >= 0 && index < strlen(description));
+    return description[index];
+}
+
+char InventoryItem::operator[](int index) const {
+    assert(index >= 0 && index < strlen(description));
+    return description[index];
+    
+}
 
 void InventoryItem::setInfo(const char* inDesc, int inUnits) {
     units = inUnits;
@@ -39,6 +55,18 @@ void InventoryItem::setUnits(int inUnits) {
 ostream& operator<<(ostream& out, const InventoryItem& source){
     out << source.units << " " << source.description;
     return out;
+}
+
+istream& operator>>(istream& in, InventoryItem& target) {
+    char temp[128];// max desciprtion size
+
+    in.getline(temp, 127, ':');
+    delete[] target.description;
+    target.description = new char[strlen(temp) + 1];
+    strcpy(target.description, temp);
+    in >> target.units;
+
+    return in;
 }
 
 
