@@ -58,6 +58,12 @@ ostream& operator<<(ostream& out, const InventoryItem& source){
 }
 
 istream& operator>>(istream& in, InventoryItem& target) {
+
+    while (isspace(in.peek())) {
+        in.ignore();
+    }
+
+
     char temp[128];// max desciprtion size
 
     in.getline(temp, 127, ':');
