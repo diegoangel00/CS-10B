@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cassert>
 #include "fraction2.h"
@@ -10,9 +11,7 @@ namespace cs_fraction {
     Fraction::Fraction() {
 
         numerator = 0;
-        //denominator can't be set 0 
-        denominator = 1;
-
+        simplify();
     }
 
     Fraction::Fraction(int num) {
@@ -45,6 +44,9 @@ namespace cs_fraction {
             numerator = numerator * -1;
         }
 
+        if (numerator == 0) {
+            denominator = 1;
+        }
 
 
         for (int i = 1; i <= numerator; i++) {
@@ -61,107 +63,48 @@ namespace cs_fraction {
     }
 
 
+    // pre increment
+    Fraction Fraction::operator++() {
+        numerator++;
 
-
-
-
-    Fraction Fraction::addedTo(const Fraction& f2) const {
-        // Goal is to add the current Fraction called and the Fraction that was passed to it
-        // finds greatest common denominator and adds numerators
-        // Outputs the simplified result, does not deal with negatives
-        // NEEDS simplify()
-
-        Fraction result;
-        //stores the numerator 
-        result.numerator = numerator * f2.denominator + denominator * f2.numerator;
-        //stores the denominator
-        result.denominator = denominator * f2.denominator;
-        //simplifies the fraction before returning 
-        result.simplify();
-
-        return result;
+        //*this means a pointer to the calling object
+        return *this;
     }
 
+    //post increment 
+    Fraction Fraction::operator++(int) {
+        //all the same way of doing it
+        //Feetinches temp(feet, inches);
+        Fraction temp = *this;
+        //FeetInches temp(*this);
 
 
+        numerator++;
 
-
-    Fraction Fraction::subtract(const Fraction& f2) const {
-        // Goal is to subtract the current Fraction called and the Fraction that was passed to it
-        // finds greatest common denominator and subtracts numerators
-        // Outputs the simplified result, does not deal with negatives
-        // NEEDS simplify()
-
-        Fraction result;
-        //stores the numerator 
-        result.numerator = numerator * f2.denominator - denominator * f2.numerator;
-        //stores the denominator
-        result.denominator = denominator * f2.denominator;
-        //simplifies the fraction before returning 
-        result.simplify();
-
-        return result;
+        //*this means a pointer to the calling object
+        return temp;
     }
 
+    // pre deincrement
+    Fraction Fraction::operator--() {
+        numerator--;
 
-
-
-
-    Fraction Fraction::multipliedBy(const Fraction& f2) const {
-        // Goal is to multiply the current Fraction called and the Fraction that was passed to it
-        // Outputs the simplified result, does not deal with negatives
-        // NEEDS simplify()
-
-        Fraction result;
-        //stores the numerator 
-        result.numerator = numerator * f2.numerator;
-        //stores the denominator
-        result.denominator = denominator * f2.denominator;
-        //simplifies the fraction before returning 
-        result.simplify();
-
-        return result;
+        //*this means a pointer to the calling object
+        return *this;
     }
 
+    //post deincrement 
+    Fraction Fraction::operator--(int) {
+        //all the same way of doing it
+        //Feetinches temp(feet, inches);
+        Fraction temp = *this;
+        //FeetInches temp(*this);
 
 
+        numerator--;
 
-
-    Fraction Fraction::dividedBy(const Fraction& f2) const {
-        // Goal is to divide the current Fraction called and the Fraction that was passed to it
-        // Outputs the simplified result 
-        // NEEDS simplify()
-
-        Fraction result;
-        //stores the numerator 
-        result.numerator = numerator * f2.denominator;
-        //stores the denominator
-        result.denominator = denominator * f2.numerator;
-        //simplifies the fraction before returning 
-        result.simplify();
-
-        return result;
-    }
-
-
-
-
-    bool Fraction::isEqualTo(const Fraction& f2) {
-        // Goal is to check if the current Fraction called and the Fraction that was passed to it are the same
-        // Outputs the simplified result 
-        // NEEDS simplify()
-        //checks if fractions are the same without simplification
-        if (numerator * f2.denominator == denominator * f2.numerator) {
-            return true;
-
-        }
-        return false;
-    }
-
-    void Fraction::print() const {
-
-        //prints the unsimplified Fraction
-        cout << numerator << "/" << denominator;
+        //*this means a pointer to the calling object
+        return temp;
     }
 
 
@@ -201,61 +144,59 @@ namespace cs_fraction {
     // Outputs the simplified result, does not deal with negatives
     // NEEDS simplify()
 
-        Fraction result;
+        Fraction result(f1.numerator * f2.denominator - f1.denominator * f2.numerator, f1.denominator * f2.denominator);
         //stores the numerator 
-        result.numerator = f1.numerator * f2.denominator - f1.denominator * f2.numerator;
+        //result.numerator = f1.numerator * f2.denominator - f1.denominator * f2.numerator;
         //stores the denominator
-        result.denominator = f1.denominator * f2.denominator;
+        //result.denominator = f1.denominator * f2.denominator;
         //simplifies the fraction before returning 
         result.simplify();
 
         return result;
 
     }
+
     Fraction operator*(const Fraction& f1, const Fraction& f2) {
         // Goal is to multiply the current Fraction called and the Fraction that was passed to it
         // Outputs the simplified result, does not deal with negatives
         // NEEDS simplify()
 
-        Fraction result;
+        Fraction result(f1.numerator * f2.numerator, f1.denominator * f2.denominator);
         //stores the numerator 
-        result.numerator = f1.numerator * f2.numerator;
+       // result.numerator = f1.numerator * f2.numerator;
         //stores the denominator
-        result.denominator = f1.denominator * f2.denominator;
+        //result.denominator = f1.denominator * f2.denominator;
         //simplifies the fraction before returning 
-        result.simplify();
+        //result.simplify();
 
         return result;
 
     }
+
+
+
+
+
     Fraction operator/(const Fraction& f1, const Fraction& f2) {
         // Goal is to divide the current Fraction called and the Fraction that was passed to it
         // Outputs the simplified result 
         // NEEDS simplify()
 
-        Fraction result;
+        Fraction result(f1.numerator * f2.denominator, f1.denominator * f2.numerator);
+
         //stores the numerator 
-        result.numerator = f1.numerator * f2.denominator;
+        //result.numerator = f1.numerator * f2.denominator;
         //stores the denominator
-        result.denominator = f1.denominator * f2.numerator;
+        //result.denominator = f1.denominator * f2.numerator;
         //simplifies the fraction before returning 
-        result.simplify();
+        //result.simplify();
 
         return result;
 
     }
 
 
-
-
     bool operator<(const Fraction& f1, const Fraction& f2) {
-        Fraction leftNumerator;
-        Fraction rightNumerator;
-        //stores the numerator 
-        //result.numerator = numerator * f2.denominator + denominator * f2.numerator;
-        leftNumerator = f1.numerator * f2.denominator;
-        rightNumerator = f1.denominator * f2.numerator;
-        //simplifies the fraction before returning 
 
         return (f1.numerator * f2.denominator < f1.denominator* f2.numerator);
 
@@ -269,36 +210,17 @@ namespace cs_fraction {
         //result.numerator = numerator * f2.denominator + denominator * f2.numerator;
         leftNumerator = f1.numerator * f2.denominator;
         rightNumerator = f1.denominator * f2.numerator;
-        //simplifies the fraction before returning 
 
         return (f1.numerator * f2.denominator > f1.denominator * f2.numerator);
-
-
     }
 
     bool operator<=(const Fraction& f1, const Fraction& f2) {
-        Fraction leftNumerator;
-        Fraction rightNumerator;
-        //stores the numerator 
-        //result.numerator = numerator * f2.denominator + denominator * f2.numerator;
-        leftNumerator = f1.numerator * f2.denominator;
-        rightNumerator = f1.denominator * f2.numerator;
-        //simplifies the fraction before returning 
 
         return (f1.numerator * f2.denominator <= f1.denominator * f2.numerator);
 
     }
 
     bool operator>=(const Fraction& f1, const Fraction& f2) {
-        Fraction leftNumerator;
-        Fraction rightNumerator;
-        //stores the numerator 
-        //result.numerator = numerator * f2.denominator + denominator * f2.numerator;
-
-        //
-        leftNumerator = f1.numerator * f2.denominator;
-        rightNumerator = f1.denominator * f2.numerator;
-        //simplifies the fraction before returning 
 
         return (f1.numerator * f2.denominator >= f1.denominator * f2.numerator);
 
@@ -306,18 +228,7 @@ namespace cs_fraction {
 
     bool operator !=(const Fraction& f1, const Fraction& f2) {
 
-        Fraction leftNumerator;
-        Fraction rightNumerator;
-        //stores the numerator 
-        //result.numerator = numerator * f2.denominator + denominator * f2.numerator;
-
-        //
-        leftNumerator = f1.numerator * f2.denominator;
-        rightNumerator = f1.denominator * f2.numerator;
-        //simplifies the fraction before returning 
-
         return !(f1.numerator * f2.denominator == f1.denominator * f2.numerator);
-
 
     }
     bool operator==(const Fraction& f1, const Fraction& f2) {
@@ -330,7 +241,8 @@ namespace cs_fraction {
         leftNumerator = f1.numerator * f2.denominator;
         rightNumerator = f1.denominator * f2.numerator;
         //simplifies the fraction before returning 
-
+        leftNumerator.simplify();
+        rightNumerator.simplify();
         return (f1.numerator * f2.denominator == f1.denominator * f2.numerator);
 
 
@@ -344,7 +256,7 @@ namespace cs_fraction {
         // or:
         //feet += right.feet;
         //inches += right.inches;
-        //simplify();
+        simplify();
 
         return *this;
     }
@@ -355,7 +267,7 @@ namespace cs_fraction {
         // or:
         //feet += right.feet;
         //inches += right.inches;
-        //simplify();
+        simplify();
 
         return *this;
     }
@@ -366,7 +278,7 @@ namespace cs_fraction {
         // or:
         //feet += right.feet;
         //inches += right.inches;
-        //simplify();
+        simplify();
 
         return *this;
     }
@@ -377,17 +289,40 @@ namespace cs_fraction {
         // or:
         //feet += right.feet;
         //inches += right.inches;
-        //simplify();
+        simplify();
 
         return *this;
     }
 
 
-    ostream& operator<<(ostream& out, Fraction& right){
+    ostream& operator<<(ostream& out, const Fraction& target){
+        if(target.denominator == 1)
+            out << target.numerator;
+        else
+            out << target.numerator << "/" << target.denominator;
+        return out;
+    }
+    
+    istream& operator>>(istream& in, Fraction& target) {
+        int temp;
+        in >> temp;
+        if (in.peek() == '+') {
+            target.
+            in.ignore();
+        }
+        else if (in.peek() == '/') {
+            in.ignore();
+        }
+        else {
+            
+        }
 
+        return in;
+        
     }
 
 }
+
 
 //output
 /*

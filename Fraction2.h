@@ -88,15 +88,6 @@ namespace cs_fraction {
         Fraction(int num);
         Fraction(int num, int den);
 
-        //These fraction classes aren't changing their input so they can be const
-        Fraction addedTo(const Fraction& f2) const;
-        Fraction subtract(const Fraction& f2) const;
-        Fraction multipliedBy(const Fraction& f2) const;
-        Fraction dividedBy(const Fraction& f2) const;
-
-        bool isEqualTo(const Fraction& f2);
-
-        void print() const;
 
         friend Fraction operator+(const Fraction& f1, const Fraction& f2);
         friend Fraction operator-(const Fraction& f1, const Fraction& f2);
@@ -112,6 +103,11 @@ namespace cs_fraction {
         friend bool operator!=(const Fraction& f1, const Fraction& f2);
         friend bool operator==(const Fraction& f1, const Fraction& f2);
 
+        Fraction operator++(); //pre increment
+        Fraction operator++(int); //post increment
+
+        Fraction operator--(); //pre deincrement
+        Fraction operator--(int); //post deincrement
 
         Fraction operator+=(const Fraction& f2);
         Fraction operator-=(const Fraction& f2);
@@ -119,7 +115,8 @@ namespace cs_fraction {
         Fraction operator/=(const Fraction& f2);
 
 
-        friend std::ostream& operator<<(std::ostream& out, Fraction& right);
+        friend std::ostream& operator<<(std::ostream& out, const Fraction& target);
+        friend std::istream& operator>>(std::istream& in, Fraction& target);
 
     private:
         /*[Called to simplify fractions variables, is called in the constructer
