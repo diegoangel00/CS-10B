@@ -1,0 +1,77 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void print(const vector<int>& v);
+
+int main() {
+    vector<int> v;
+    vector<int> ::size_type currentSize;
+    //int currentSize;
+
+    for (int i = 0; i < 20; i++) {
+        v.push_back(i);
+
+        currentSize = v.size();
+        cout << "size: " << currentSize << " capacity: " << v.capacity() << endl;
+    }
+
+    //takes vector input
+    print(v);
+}
+
+//original
+//void print(vector<int>& printMe) {
+
+void print(const vector<int>& printMe) {
+    for (int i = 0; i < printMe.size(); i++) {
+        //checks to see if i is the range of the vector
+        cout << printMe.at(i) << " ";
+    }
+    cout << endl;
+
+    for (vector<int>::size_type i = 0; i < printMe.size(); i++) {
+        cout << printMe[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 0; i < printMe.size(); i++) {
+        cout << printMe.at(i) << " ";
+    }
+    cout << endl;
+
+    //printMe.being, accesses first value in iterator
+    //.end points to the item that is one past the last index of the container
+    //using iterator
+    
+    //original
+    //for (vector<int>::iterator i = printMe.begin(); i != printMe.end(); i++) {
+    for (vector<int>::const_iterator i = printMe.begin(); i != printMe.end(); i++) {
+        //same as pointer 
+        cout << *i << " ";
+    }
+    cout << endl;
+
+    //throws an error
+    //cout << printMe.at(150) << endl;
+}
+
+/*
+1. Declaration
+ - vector<int>::iterator i
+2. initialize i to the beginning of the vector
+ - i = printMe.begin()
+3. copmare it to the end of the vector
+ - i != printMe.end()
+4. advance i to th next item in the vector
+ -  i++
+5. access the item at position i in the vector
+ - cout << *i << " ";
+*/
+
+/*
+1. STL/Vectos
+2. size_type
+3. iterators
+4. const-iterators
+*/
