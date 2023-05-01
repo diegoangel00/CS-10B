@@ -1,5 +1,6 @@
 #include <cassert>
-//#include "myvector.h"
+#include <string>
+//include "myvector.h"
 //using namespace std;
 
 template <class T>
@@ -24,16 +25,25 @@ typename MyVector<T>::size_type MyVector<T>::size() const {
 
 
 template <class T>
-typename MyVector<T>::size_type MyVector<T>::capacity() const{
+typename MyVector<T>::size_type MyVector<T>::capacity() const {
     //mCapacity is Private
     return mCapacity;
 }
 
 
 template <class T>
-typename MyVector<T>::value_type MyVector<T>::at(size_type i) const{
+typename MyVector<T>::value_type MyVector<T>::at(size_type i) const {
     //size is defined
-    assert(i >= 0 && i < size());
+    // assert is dealt with by the if statement
+    //assert(i >= 0 && i < size());
+    
+    if (i < 0 || i >= size()) {
+        /*
+        std::string str = "out-of-range-error";
+        throw str;*/
+        throw outOfRangeError();
+    }
+    
     return items[i];
 }
 
@@ -62,3 +72,4 @@ void MyVector<T>::push_back(const value_type& inValue) {
         items = temp;
     }
 }
+
