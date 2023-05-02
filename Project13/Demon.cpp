@@ -5,31 +5,28 @@ using namespace cs_creature;
 using namespace std;
 
 Demon::Demon() {
-
-    // initialize to human, 10 strength, 10 hitpoints
-    strength = 10;                 // how much damage this Creature inflicts
-    hitpoints = 10;                // how much damage this Creature can sustain
 }
 
 
-Demon::Demon( int newStrength, int newHitpoints) {
-    strength = newStrength;                 // how much damage this Creature inflicts
-    hitpoints = newHitpoints;                // how much damage this Creature can sustain
+Demon::Demon(int newStrength, int newHitpoints)
+    :Creature(newStrength, newHitpoints)
+{
 }
 
-// initialize to human, 10 strength, 10 hitpoints
+
 int Demon::getDamage() const {
     int damage;
 
     // All Creatures inflict damage which is a random number up to their strength
     damage = Creature::getDamage();
-    cout << getSpecies() << " attacks for " << damage << " points!" << endl;
 
     // Demons can inflict bonus damage of DEMONIC_BONUS_DAMAGE with a DEMONIC_ATTACK_PROBABILITY chance
+
     if (rand() % 100 * 0.01 < DEMONIC_ATTACK_PROBABILITY) {
         damage = damage + DEMONIC_BONUS_DAMAGE;
         cout << "Demonic attack inflicts " << DEMONIC_BONUS_DAMAGE << " additional damage points!" << endl;
     }
+
 
     return damage;
 }
@@ -38,6 +35,6 @@ int Demon::getDamage() const {
 
 string Demon::getSpecies() const {
 
-    return "The Demon";
+    return "demon";
 
 }
