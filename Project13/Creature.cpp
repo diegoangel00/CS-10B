@@ -2,8 +2,8 @@
 #include <queue>    // Provides queue<string>
 #include <string>   // Provides string
 #include <iostream>
-//#include <string>
 using namespace std;
+using namespace cs_creature;
 
 
 Creature::Creature() {
@@ -16,7 +16,6 @@ Creature::Creature() {
 
 
 Creature::Creature(int newType, int newStrength, int newHitpoints) {
-
     type = newType;                     // 0 human, 1 cyberdemon, 2 balrog, 3 elf
     strength = newStrength;                 // how much damage this Creature inflicts
     hitpoints = newHitpoints;                // how much damage this Creature can sustain
@@ -28,7 +27,7 @@ int Creature::getDamage() const {
 
     // All Creatures inflict damage which is a random number up to their strength
     damage = (rand() % strength) + 1;
-    cout << getSpecies() << " attacks for " << damage << " points!" << endl;
+    //cout << getSpecies() << " attacks for " << damage << " points!" << endl;
 
     // Demons can inflict bonus damage of DEMONIC_BONUS_DAMAGE with a DEMONIC_ATTACK_PROBABILITY chance
     if (type == 2 || type == 1) {
@@ -56,16 +55,20 @@ int Creature::getDamage() const {
     return damage;
 }
 
+int Creature::getHitpoints() const {
+    return hitpoints;
+}
 
-
-
+int Creature::getStrength() const {
+    return hitpoints;
+}
 
 string Creature::getSpecies() const {
     switch (type) {
-    case 0: return "human";
-    case 1: return "cyberdemon";
-    case 2: return "balrog";
-    case 3: return "elf";
+        case 0: return "human";
+        case 1: return "cyberdemon";
+        case 2: return "balrog";
+        case 3: return "elf";
     }
     return "unknown";
 }
