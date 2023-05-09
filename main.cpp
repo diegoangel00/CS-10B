@@ -77,10 +77,11 @@ void readData(vector<Highscore>& scores){
 
 void sortData(vector<Highscore>& scores) {
     for (vector<Highscore>::iterator count = scores.begin();  count != scores.end(); count++) {
-        vector<Highscore>::iterator rep =  findLocationOfLargest(count, scores.end());
+
+        vector<Highscore>::iterator larger =  findLocationOfLargest(count, scores.end());
 
 
-        swap(rep ,  count );
+        swap(*larger ,  *count );
 
     }
 }
