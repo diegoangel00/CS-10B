@@ -38,7 +38,7 @@ int main()
     //Highscore highscores;
     getVectorSize(size);
     vector<Highscore> highscores(size);
-    
+
 
     readData(highscores);
     sortData(highscores);
@@ -56,13 +56,13 @@ void getVectorSize(int& size) {
 }
 
 
-void readData(vector<Highscore>& scores){
+void readData(vector<Highscore>& scores) {
     int person = 1;
-    for (vector<Highscore>::iterator count = scores.begin();  count != scores.end(); count++)
+    for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++)
     {
         cout << "Enter the name for score #" << person << ": ";
         cin.getline(count->name, MAX_NAME_SIZE, '\n');
-        
+
         //i->name << " : " << i->score
 
         cout << "Enter the score for score #" << person << ": ";
@@ -70,18 +70,18 @@ void readData(vector<Highscore>& scores){
         cin.ignore();
         person++;
     }
-    cout << endl;
+    //cout << endl;
 
 }
 
 
 void sortData(vector<Highscore>& scores) {
-    for (vector<Highscore>::iterator count = scores.begin();  count != scores.end(); count++) {
+    for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++) {
 
-        vector<Highscore>::iterator larger =  findLocationOfLargest(count, scores.end());
+        vector<Highscore>::iterator larger = findLocationOfLargest(count, scores.end());
 
 
-        swap(*larger ,  *count );
+        swap(*larger, *count);
 
     }
 }
@@ -90,7 +90,7 @@ void sortData(vector<Highscore>& scores) {
 
 vector<Highscore>::iterator findLocationOfLargest(
     const vector<Highscore>::iterator startingLocation,
-    const vector<Highscore>::iterator endingLocation) 
+    const vector<Highscore>::iterator endingLocation)
 {
     vector<Highscore>::iterator indexOfLargest = startingLocation;
 
@@ -103,11 +103,11 @@ vector<Highscore>::iterator findLocationOfLargest(
 }
 
 
-void displayData(const vector<Highscore>& scores){
+void displayData(const vector<Highscore>& scores) {
     cout << "Top Scorers: " << endl;
     for (vector<Highscore>::const_iterator i = scores.begin(); i != scores.end(); i++)
     {
-        cout << i->name << " : " << i->score << endl;
+        cout << i->name << ": " << i->score << endl;
     }
 }
 
